@@ -1,15 +1,7 @@
-import PageButton from './components/button/PageButton';
+import Routes from './routes/Routes';
 
 function App() {
-  const pages: string[] = ['단어', '문장', '내 학습', '커뮤니티'];
-  
-  return (
-    <div>
-      {pages.map((page, i) => (
-        <PageButton key={i} title={page} />
-      ))}
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
