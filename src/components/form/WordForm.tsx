@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { FormData, WordList } from '../../types/types';
 
 const WordForm: React.FC = () => {
@@ -11,12 +10,11 @@ const WordForm: React.FC = () => {
   const handleList = () => {
     setWordList(wordList.concat([[formData.word, formData.mean]]));
   };
-
   const removeWord = (e: React.MouseEvent<HTMLButtonElement>): void => {
     const parentElement = e.currentTarget.parentElement;
     if (parentElement) {
       const removeIndex = parseInt(parentElement.innerText.split('\n')[0]);
-      setWordList(wordList.filter((v, i) => i !== removeIndex));
+      setWordList(wordList.filter((_, i) => i !== removeIndex));
     }
   };
 
@@ -38,7 +36,8 @@ const WordForm: React.FC = () => {
           return (
             <div key={i}>
               {i}
-              <div>{v}</div>
+              <div>{v[0]}</div>
+              <div>{v[1]}</div>
               <button type='button' onClick={removeWord}>
                 삭제
               </button>
