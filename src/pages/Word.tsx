@@ -5,6 +5,7 @@ const InputForm: React.FC = () => {
   return (
     <>
       <BackBtn />
+      <button>시작하기 </button>
       <WordForm />
     </>
   );

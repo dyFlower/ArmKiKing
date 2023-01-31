@@ -1,12 +1,8 @@
 import { useState } from 'react';
 
-type FormData = {
-  word: string;
-  mean: string;
-};
-type WordList = string[][];
+import { FormData, WordList } from '../../types/types';
 
-const WordForm = () => {
+const WordForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ word: '', mean: '' });
   const [wordList, setWordList] = useState<WordList>([]);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,6 +10,14 @@ const WordForm = () => {
   };
   const handleList = () => {
     setWordList(wordList.concat([[formData.word, formData.mean]]));
+  };
+
+  const removeWord = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    const parentElement = e.currentTarget.parentElement;
+    if (parentElement) {
+      const removeIndex = parseInt(parentElement.innerText.split('\n')[0]);
+      setWordList(wordList.filter((v, i) => i !== removeIndex));
+    }
   };
 
   return (
@@ -30,9 +34,17 @@ const WordForm = () => {
         제출
       </button>
       <div>
-        {wordList.map((v: any) => (
-          <div>{v}</div>
-        ))}
+        {wordList.map((v, i) => {
+          return (
+            <div key={i}>
+              {i}
+              <div>{v}</div>
+              <button type='button' onClick={removeWord}>
+                삭제
+              </button>
+            </div>
+          );
+        })}
       </div>
     </form>
   );
