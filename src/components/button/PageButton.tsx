@@ -1,5 +1,15 @@
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { Title } from '../../types/props';
+
+const CategoryBtn = styled.button`
+  width: 20%;
+  padding: 5%;
+  margin: 0 10px;
+  font-size: 2rem;
+  border-radius: 10px;
+  background-color: var(--green);
+`;
 
 const PageButton = ({ props }: { props: Title }) => {
   const navigate = useNavigate();
@@ -7,13 +17,13 @@ const PageButton = ({ props }: { props: Title }) => {
     navigate(`/${props.address}`);
   };
   return (
-    <button
+    <CategoryBtn
       onClick={() => {
         routeTest();
       }}
     >
       <p>{props.title}</p>
-    </button>
+    </CategoryBtn>
   );
 };
 

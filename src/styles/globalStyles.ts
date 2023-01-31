@@ -47,6 +47,7 @@ img{
     --black: #1C1C1C;
     --red: #FF1818;
     --green: #50c927;
+    --light-gray: #E8E8E8;
 }
 body {
   text-align: center;

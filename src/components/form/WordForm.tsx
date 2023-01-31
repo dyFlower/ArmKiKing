@@ -1,5 +1,47 @@
 import { useState } from 'react';
-import { FormData, WordList } from '../../types/types';
+import styled from 'styled-components';
+import { FormData, WordList } from '../../types/interface';
+
+const PaperWrap = styled.div`
+  margin: 0 auto;
+  background-color: palegreen;
+  border: 1px solid gray;
+  padding: 20px;
+  width: 80%;
+`;
+const ListWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+
+const IndexNum = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  width: 30px;
+  text-align: center;
+`;
+
+const WordDiv = styled.div`
+  font-size: 1.3rem;
+  margin-left: 10px;
+  width: 40%;
+`;
+
+const MeanDiv = styled.div`
+  font-size: 1.3rem;
+  margin-left: 10px;
+  width: 40%;
+`;
+
+const RemoveBtn = styled.button`
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 5px 10px;
+  cursor: pointer;
+`;
 
 const WordForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ word: '', mean: '' });
@@ -7,14 +49,15 @@ const WordForm: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleList = () => {
+  const handleList = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setWordList(wordList.concat([[formData.word, formData.mean]]));
   };
-  const removeWord = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    const parentElement = e.currentTarget.parentElement;
-    if (parentElement) {
-      const removeIndex = parseInt(parentElement.innerText.split('\n')[0]);
-      setWordList(wordList.filter((_, i) => i !== removeIndex));
+  const removeWord = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const parentNode = e.currentTarget.parentElement;
+    const removeIndex = parentNode?.firstChild?.textContent;
+    if (removeIndex) {
+      setWordList(wordList.filter((_, i) => i + 1 !== parseInt(removeIndex)));
     }
   };
 
@@ -28,23 +71,25 @@ const WordForm: React.FC = () => {
         <label htmlFor='mean'>뜻 : </label>
         <input type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
       </div>
-      <button type='button' onClick={handleList}>
+      <button type='submit' onClick={handleList}>
         제출
       </button>
-      <div>
+      <div>암기목록</div>
+
+      <PaperWrap>
         {wordList.map((v, i) => {
           return (
-            <div key={i}>
-              {i}
-              <div>{v[0]}</div>
-              <div>{v[1]}</div>
-              <button type='button' onClick={removeWord}>
+            <ListWrap key={i}>
+              <IndexNum>{i + 1}</IndexNum>
+              <WordDiv>{v[0]}</WordDiv>
+              <MeanDiv>{v[1]}</MeanDiv>
+              <RemoveBtn type='button' onClick={removeWord}>
                 삭제
-              </button>
-            </div>
+              </RemoveBtn>
+            </ListWrap>
           );
         })}
-      </div>
+      </PaperWrap>
     </form>
   );
 };
