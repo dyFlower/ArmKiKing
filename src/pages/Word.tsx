@@ -1,5 +1,13 @@
-const Word = () => {
-  return <div>Word</div>;
+import { BackBtn } from '../components/button/BackBtn';
+import WordForm from '../components/form/WordForm';
+
+const InputForm: React.FC = () => {
+  return (
+    <>
+      <BackBtn />
+      <WordForm />
+    </>
+  );
 };
 
-export default Word;
+export default InputForm;
