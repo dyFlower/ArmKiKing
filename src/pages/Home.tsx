@@ -1,13 +1,15 @@
 import PageButton from '../components/button/PageButton';
-import { pages } from '../assets/titlsList';
+import { pages } from '../assets/titleList';
+import HomeWrapper from '../components/wrapper/HomeWrapper';
+
 
 function Home() {
   return (
-    <div>
+    <HomeWrapper>
       {pages.map((v) => (
         <PageButton props={v} />
       ))}
-    </div>
+    </HomeWrapper>
   );
 }
 
