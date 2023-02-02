@@ -4,7 +4,7 @@ const HomeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20%;
+  margin-top: 32vh;
 `;
 
 export default HomeWrapper;

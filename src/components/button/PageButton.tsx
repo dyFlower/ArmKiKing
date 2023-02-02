@@ -4,7 +4,7 @@ import { Title } from '../../types/props';
 
 const CategoryBtn = styled.button`
   width: 20%;
-  height: 260px;
+  height: 250px;
   padding: 5%;
   margin: 0 10px;
   font-size: 2rem;

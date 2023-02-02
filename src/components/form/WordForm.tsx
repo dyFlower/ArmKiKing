@@ -90,7 +90,7 @@ const WordForm: React.FC = () => {
           <input type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
         </div>
         <button type='submit' onClick={handleList}>
-          제출
+          입력
         </button>
         <div>암기목록</div>
 
