@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CommonBtn = styled.div`
+const CommonBtn = styled.button`
   background-color: var(--black);
   color: white;
   padding: 12px 32px;

@@ -24,7 +24,7 @@ export const BackBtn = () => {
     <Btn
       type='button'
       onClick={() => {
-        navigate(-1);
+        navigate('/');
       }}
     >
       뒤로가기

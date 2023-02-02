@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FormData, WordList } from '../../../types/interface';
 import CommonBtn from '../../button/CommonBtn';
+
 import { IndexNum, ListWrap, MeanDiv, PaperWrap, RemoveBtn, WordDiv } from './wordFormStyle';
 
 const WordForm: React.FC = () => {
@@ -37,6 +38,9 @@ const WordForm: React.FC = () => {
     const newSelected = selected.map((v) => false);
     setSelected(newSelected);
   };
+  const handleRemoveAll = () => {
+    setWordList([]);
+  };
   return (
     <>
       <form>
@@ -48,12 +52,18 @@ const WordForm: React.FC = () => {
           <label htmlFor='mean'>뜻 : </label>
           <input type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
         </div>
-        <button type='submit' onClick={handleList}>
+        <CommonBtn type='submit' onClick={handleList} style={{ display: 'block', margin: '0 auto' }}>
           입력
-        </button>
-        <div>암기목록</div>
-        <CommonBtn onClick={handleHideAll}>전체 숨기기</CommonBtn>
-        <CommonBtn onClick={handleShowAll}>전체 보기</CommonBtn>
+        </CommonBtn>
+        <CommonBtn type='button' onClick={handleHideAll}>
+          Hide
+        </CommonBtn>
+        <CommonBtn type='button' onClick={handleShowAll}>
+          Show
+        </CommonBtn>
+        <CommonBtn type='button' onClick={handleRemoveAll}>
+          전체 삭제
+        </CommonBtn>
         <PaperWrap>
           {wordList.map((v, i) => {
             return (
