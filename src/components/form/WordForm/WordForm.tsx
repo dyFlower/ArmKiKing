@@ -1,48 +1,7 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { FormData, WordList } from '../../types/interface';
-
-const PaperWrap = styled.div`
-  margin: 0 auto;
-  background-color: var(--light-gray);
-  border: 1px solid gray;
-  padding: 20px;
-  width: 80%;
-`;
-const ListWrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 25px;
-`;
-
-const IndexNum = styled.div`
-  font-size: 14px;
-  font-weight: bold;
-  width: 30px;
-  text-align: center;
-`;
-
-const WordDiv = styled.div`
-  font-size: 1.3rem;
-  margin-left: 10px;
-  width: 40%;
-`;
-
-const MeanDiv = styled.div`
-  font-size: 1.3rem;
-  margin-left: 10px;
-  width: 40%;
-  background-color: #cfcbcb;
-`;
-
-const RemoveBtn = styled.button`
-  font-size: 14px;
-  background-color: white;
-  border: 1px solid gray;
-  padding: 5px 10px;
-  cursor: pointer;
-`;
+import { FormData, WordList } from '../../../types/interface';
+import CommonBtn from '../../button/CommonBtn';
+import { IndexNum, ListWrap, MeanDiv, PaperWrap, RemoveBtn, WordDiv } from './wordFormStyle';
 
 const WordForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ word: '', mean: '' });
@@ -93,15 +52,8 @@ const WordForm: React.FC = () => {
           입력
         </button>
         <div>암기목록</div>
-
-        <button type='button' onClick={handleHideAll}>
-          전체 숨기기
-        </button>
-
-        <button type='button' onClick={handleShowAll}>
-          전체 보기
-        </button>
-
+        <CommonBtn onClick={handleHideAll}>전체 숨기기</CommonBtn>
+        <CommonBtn onClick={handleShowAll}>전체 보기</CommonBtn>
         <PaperWrap>
           {wordList.map((v, i) => {
             return (
