@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageWrapper = styled.div`
   margin: 0 auto;
   width: 80%;
-  height: 100vh;
+  min-height: 100vh;
   padding-bottom: 5%;
   background-color: #f2ecad;
 `;

@@ -7,14 +7,17 @@ import postit3 from '../../assets/images/postit3.png';
 import postit4 from '../../assets/images/postit4.png';
 
 const CategoryBtn = styled.button`
-  width: 80%;
-  height: 100%;
+  width: 100%;
   font-size: 2.5rem;
   background-repeat: no-repeat;
   background-size: cover;
   justify-content: center;
   margin: 0 auto;
   font-family: 'FlowerSalt';
+  cursor: pointer;
+  &:hover {
+    font-size: 3rem;
+  }
 `;
 
 const postBg = [postit1, postit2, postit3, postit4];
