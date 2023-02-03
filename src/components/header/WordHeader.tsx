@@ -3,7 +3,7 @@ import { BackBtn } from '../button/BackBtn';
 const WordHeader = () => {
   return (
     <>
-      <h2 style={{ fontFamily: 'FlowerSalt', fontSize: '50px', paddingTop: '30px' }}>
+      <h2 style={{ fontFamily: 'FlowerSalt', fontSize: '50px', paddingTop: '30px', position: 'relative' }}>
         <BackBtn />
         Word
       </h2>

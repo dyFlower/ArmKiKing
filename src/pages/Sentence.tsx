@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { BackBtn } from '../components/button/BackBtn';
 import CommonBtn from '../components/button/CommonBtn';
-import { SideWrapper, BlockWrapper, BtnWrapper } from '../components/wrapper/sentencePage/Wrapper';
+import { SideWrapper, BlockWrapper, BtnWrapper, PageWrapper } from '../components/wrapper/sentencePage/Wrapper';
 import { ParaInput, AnswerInput, ShowInput } from '../components/input/senteneInputStyle';
 import useTextAreaAutoHeight from '../hooks/useTextAreaAutoHeight';
+import SentenceHeader from '../components/header/SentenceHeader';
 
 const Sentence = () => {
   const [hide, setHide] = useState<Boolean>(false);
@@ -12,8 +12,8 @@ const Sentence = () => {
   const textareaRef = useTextAreaAutoHeight(answer);
 
   return (
-    <>
-      <BackBtn />
+    <PageWrapper>
+      <SentenceHeader />
       <BlockWrapper>
         <SideWrapper>
           <BtnWrapper>
@@ -57,7 +57,7 @@ const Sentence = () => {
           </ShowInput>
         </SideWrapper>
       </BlockWrapper>
-    </>
+    </PageWrapper>
   );
 };
 
