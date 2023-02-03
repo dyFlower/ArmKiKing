@@ -1,16 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Title } from '../../types/props';
+import postit1 from '../../assets/images/postit1.png';
+import postit2 from '../../assets/images/postit2.png';
+import postit3 from '../../assets/images/postit3.png';
+import postit4 from '../../assets/images/postit4.png';
 
 const CategoryBtn = styled.button`
-  width: 20%;
-  height: 250px;
-  padding: 5%;
-  margin: 0 10px;
-  font-size: 2rem;
-  border-radius: 10px;
-  background-color: var(--green);
+  width: 80%;
+  height: 100%;
+  font-size: 2.5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: 'FlowerSalt';
 `;
+
+const postBg = [postit1, postit2, postit3, postit4];
 
 const PageButton = ({ props }: { props: Title }) => {
   const navigate = useNavigate();
@@ -19,6 +26,7 @@ const PageButton = ({ props }: { props: Title }) => {
   };
   return (
     <CategoryBtn
+      style={{ backgroundImage: `url(${postBg[props.num]})` }}
       onClick={() => {
         routeTest();
       }}

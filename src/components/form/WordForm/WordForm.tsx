@@ -43,44 +43,45 @@ const WordForm: React.FC = () => {
   };
   return (
     <>
-      <form>
-        <div>
-          <label htmlFor='word'>단어 : </label>
-          <input type='text' id='word' name='word' value={formData.word} onChange={handleChange} />
+      <form style={{ fontSize: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px', marginBottom: '20px' }}>
+        <div style={{}}>
+          <label htmlFor='word'>단어 :</label>
+          <input style={{ backgroundColor: 'var(--light-gray)', fontSize: 'inherit' }} type='text' id='word' name='word' value={formData.word} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor='mean'>뜻 : </label>
-          <input type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
+          <input style={{ backgroundColor: 'var(--light-gray)', fontSize: 'inherit' }} type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
         </div>
         <CommonBtn type='submit' onClick={handleList} style={{ display: 'block', margin: '0 auto' }}>
           입력
         </CommonBtn>
-        <CommonBtn type='button' onClick={handleHideAll}>
-          Hide
-        </CommonBtn>
-        <CommonBtn type='button' onClick={handleShowAll}>
-          Show
-        </CommonBtn>
-        <CommonBtn type='button' onClick={handleRemoveAll}>
-          전체 삭제
-        </CommonBtn>
-        <PaperWrap>
-          {wordList.map((v, i) => {
-            return (
-              <ListWrap key={i}>
-                <IndexNum>{i + 1}</IndexNum>
-                <WordDiv>{v[0]}</WordDiv>
-                <MeanDiv style={{ color: selected[i] ? 'transparent' : 'black' }} onClick={() => handleClick(i)}>
-                  {v[1]}
-                </MeanDiv>
-                <RemoveBtn type='button' onClick={removeWord}>
-                  삭제
-                </RemoveBtn>
-              </ListWrap>
-            );
-          })}
-        </PaperWrap>
       </form>
+
+      <CommonBtn type='button' onClick={handleHideAll}>
+        Hide
+      </CommonBtn>
+      <CommonBtn type='button' onClick={handleShowAll}>
+        Show
+      </CommonBtn>
+      <CommonBtn type='button' onClick={handleRemoveAll}>
+        전체 삭제
+      </CommonBtn>
+      <PaperWrap>
+        {wordList.map((v, i) => {
+          return (
+            <ListWrap key={i}>
+              <IndexNum>{i + 1}</IndexNum>
+              <WordDiv>{v[0]}</WordDiv>
+              <MeanDiv style={{ color: selected[i] ? 'transparent' : 'black' }} onClick={() => handleClick(i)}>
+                {v[1]}
+              </MeanDiv>
+              <RemoveBtn type='button' onClick={removeWord}>
+                삭제
+              </RemoveBtn>
+            </ListWrap>
+          );
+        })}
+      </PaperWrap>
     </>
   );
 };

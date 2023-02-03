@@ -33,14 +33,13 @@ const Sentence = () => {
             </CommonBtn>
           </BtnWrapper>
           <ParaInput
+            placeholder='외우고 싶은 문장을 여기에!'
             ref={textareaRef}
             style={{ color: hide ? 'transparent' : 'black' }}
             onChange={(e) => {
               setAnswer(e.target.value);
             }}
-          >
-            외우고 싶은 문장을 여기에!
-          </ParaInput>
+          />
         </SideWrapper>
         <SideWrapper>
           <AnswerInput
@@ -48,9 +47,7 @@ const Sentence = () => {
             onInput={(e) => {
               setMyAnswer(e.currentTarget.innerText);
             }}
-          >
-            맞으면 초록색, 틀리면 빨간색
-          </AnswerInput>
+          />
           <ShowInput>
             {myAnswer.split('').map((char, index) => (
               <span key={index} style={{ color: char === answer[index] ? 'var(--green)' : 'var(--red)', width: '100%' }}>
