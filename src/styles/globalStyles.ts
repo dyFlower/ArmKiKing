@@ -8,6 +8,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'FlowerSalt';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/FlowerSalt.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 ${reset}
 *{
     box-sizing: border-box;
