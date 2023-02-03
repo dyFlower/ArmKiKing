@@ -2,18 +2,19 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Btn = styled.button`
-  background-color: var(--black);
+  position: absolute;
+  left: 5px;
+  top: 15px;
+  padding: 5px 15px;
+  font-size: 20px;
   color: white;
+  background-color: var(--black);
   border-radius: 5px;
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
   text-align: center;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.2s ease;
   cursor: pointer;
   &:hover {
-    background-color: var(--red);
+    background-color: #007f3f;
   }
 `;
 
@@ -27,7 +28,7 @@ export const BackBtn = () => {
         navigate('/');
       }}
     >
-      뒤로가기
+      &#60; 뒤로 가기
     </Btn>
   );
 };
