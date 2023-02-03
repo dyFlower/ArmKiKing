@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 const Btn = styled.button`
   position: absolute;
-  left: 5px;
-  top: 15px;
-  padding: 5px 15px;
+  left: 15px;
+  top: 33px;
+  padding: 5px 10px;
   font-size: 20px;
   color: white;
   background-color: var(--black);
@@ -28,7 +28,7 @@ export const BackBtn = () => {
         navigate('/');
       }}
     >
-      &#60; 뒤로 가기
+      &#60; &#60;
     </Btn>
   );
 };
