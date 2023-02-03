@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { FormData, WordList } from '../../../types/interface';
 import CommonBtn from '../../button/CommonBtn';
-
-import { IndexNum, ListWrap, MeanDiv, PaperWrap, RemoveBtn, WordDiv } from './wordFormStyle';
+import { IndexNum, InputForm, ListWrap, MeanDiv, PaperWrap, RemoveBtn, WordDiv, WordInput } from './wordFormStyle';
 
 const WordForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({ word: '', mean: '' });
   const [wordList, setWordList] = useState<WordList>([]);
   const [selected, setSelected] = useState<boolean[]>([]);
+  const [highlight, setHighlight] = useState<boolean[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,6 +25,12 @@ const WordForm: React.FC = () => {
       setWordList(wordList.filter((_, i) => i + 1 !== parseInt(removeIndex)));
     }
   };
+
+  const handleHiglight = (index: number) => {
+    const newHightlight = [...highlight];
+    newHightlight[index] = !newHightlight[index];
+    setHighlight(newHightlight);
+  };
   const handleClick = (index: number) => {
     const newSelected = [...selected];
     newSelected[index] = !newSelected[index];
@@ -40,38 +46,47 @@ const WordForm: React.FC = () => {
   };
   const handleRemoveAll = () => {
     setWordList([]);
+    setSelected([]);
+    setHighlight([]);
   };
   return (
     <>
-      <form style={{ fontSize: '25px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px', marginBottom: '20px' }}>
+      <InputForm>
         <div style={{}}>
           <label htmlFor='word'>단어 :</label>
-          <input style={{ backgroundColor: 'var(--light-gray)', fontSize: 'inherit' }} type='text' id='word' name='word' value={formData.word} onChange={handleChange} />
+          <WordInput type='text' id='word' name='word' value={formData.word} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor='mean'>뜻 : </label>
-          <input style={{ backgroundColor: 'var(--light-gray)', fontSize: 'inherit' }} type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
+          <WordInput type='text' id='mean' name='mean' value={formData.mean} onChange={handleChange} />
         </div>
-        <CommonBtn type='submit' onClick={handleList} style={{ display: 'block', margin: '0 auto' }}>
+        <CommonBtn type='submit' onClick={handleList} style={{ display: 'block' }}>
           입력
         </CommonBtn>
-      </form>
-
-      <CommonBtn type='button' onClick={handleHideAll}>
-        Hide
-      </CommonBtn>
-      <CommonBtn type='button' onClick={handleShowAll}>
-        Show
-      </CommonBtn>
-      <CommonBtn type='button' onClick={handleRemoveAll}>
-        전체 삭제
-      </CommonBtn>
+      </InputForm>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '25px', marginBottom: '30px' }}>
+        <CommonBtn type='button' onClick={handleHideAll}>
+          Hide
+        </CommonBtn>
+        <CommonBtn type='button' onClick={handleShowAll}>
+          Show
+        </CommonBtn>
+        <CommonBtn type='button' onClick={handleRemoveAll}>
+          전체 삭제
+        </CommonBtn>
+      </div>
       <PaperWrap>
         {wordList.map((v, i) => {
           return (
-            <ListWrap key={i}>
+            <ListWrap key={i} style={{ backgroundColor: highlight[i] ? 'pink' : 'transparent' }}>
               <IndexNum>{i + 1}</IndexNum>
-              <WordDiv>{v[0]}</WordDiv>
+              <WordDiv
+                onClick={() => {
+                  handleHiglight(i);
+                }}
+              >
+                {v[0]}
+              </WordDiv>
               <MeanDiv style={{ color: selected[i] ? 'transparent' : 'black' }} onClick={() => handleClick(i)}>
                 {v[1]}
               </MeanDiv>

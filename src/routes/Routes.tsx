@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Community from '../pages/Community';
 import Home from '../pages/Home';
 import Sentence from '../pages/Sentence';
-import Word from '../pages/Word';
+import Word from '../pages/Word/Word';
 
 const Routing = () => {
   return (
