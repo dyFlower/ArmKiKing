@@ -1,1 +1,1 @@
-export type Title = { title: string; address: string };
+export type Title = { num: number; title: string; address: string };

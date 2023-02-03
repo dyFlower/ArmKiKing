@@ -1,18 +1,6 @@
 export const pages = [
-  {
-    title: '단어',
-    address: 'word',
-  },
-  {
-    title: '문장',
-    address: 'sentence',
-  },
-  {
-    title: '내 학습',
-    address: 'mystudy',
-  },
-  {
-    title: '커뮤니티',
-    address: 'community',
-  },
+  { num: 0, title: 'Word', address: 'word' },
+  { num: 1, title: 'Sentence', address: 'sentence' },
+  { num: 2, title: 'Community', address: 'mystudy' },
+  { num: 3, title: 'My Study', address: 'community' },
 ];
