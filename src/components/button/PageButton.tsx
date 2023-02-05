@@ -11,7 +11,6 @@ const CategoryBtn = styled.button`
   font-size: 2.5rem;
   background-repeat: no-repeat;
   background-size: cover;
-  justify-content: center;
   margin: 0 auto;
   font-family: 'FlowerSalt';
   cursor: pointer;
