@@ -6,14 +6,18 @@ import HomeHeader from '../components/header/HomeHeader';
 import Footer from '../components/footer/Footer';
 import LoginBtn from '../components/button/LoginBtn';
 import SignUpBtn from '../components/button/SignUpBtn';
+import LogoutBtn from '../components/button/LogoutBtn';
 
 function Home() {
   return (
     <>
       <HomeWrapper>
         <HomeHeader />
-        <LoginBtn />
-        <SignUpBtn />
+        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+          <LoginBtn />
+          <LogoutBtn />
+          <SignUpBtn />
+        </div>
         <CardWrapper>
           {pages.map((v) => (
             <PageButton props={v} />

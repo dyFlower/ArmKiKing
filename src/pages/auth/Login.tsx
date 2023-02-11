@@ -1,5 +1,5 @@
 import { auth } from '../../firebase-config';
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { useState } from 'react';
 import { LoginInput } from '../../components/input/loginInputStyle';
 import LoginWrapper from '../../components/wrapper/loginPage/LoginWrapper';
@@ -22,10 +22,6 @@ const Login = () => {
     } catch (error: any) {
       console.log(error.message);
     }
-  };
-
-  const logout = async () => {
-    await signOut(auth);
   };
 
   return (
@@ -54,9 +50,6 @@ const Login = () => {
         <CommonBtn type='button' style={{ marginTop: '20px' }} onClick={login}>
           로그인
         </CommonBtn>
-        {/* <button type='button' onClick={logout}>
-          로그아웃
-        </button> */}
       </InputWrapper>
 
       <div>{user?.email}</div>

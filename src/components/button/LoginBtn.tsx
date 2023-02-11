@@ -5,6 +5,7 @@ const LoginBtn = () => {
 
   return (
     <button
+      style={{ fontSize: '23px', backgroundColor: '#f0e18b', padding: '5px', borderRadius: '10px', boxShadow: '2px 5px 15px lightgray' }}
       type='button'
       onClick={() => {
         navigate('/login');
