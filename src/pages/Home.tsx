@@ -14,9 +14,8 @@ function Home() {
       <HomeWrapper>
         <HomeHeader />
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-          <LoginBtn />
-          <LogoutBtn />
-          <SignUpBtn />
+          {localStorage.getItem('login') ? <LogoutBtn /> : <LoginBtn />}
+          {localStorage.getItem('login') ? null : <SignUpBtn />}
         </div>
         <CardWrapper>
           {pages.map((v) => (

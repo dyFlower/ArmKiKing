@@ -19,6 +19,7 @@ const Login = () => {
     try {
       const user = await signInWithEmailAndPassword(auth, loginEmail, loginPaswword);
       console.log(user);
+      localStorage.setItem('login','on')
     } catch (error: any) {
       console.log(error.message);
     }

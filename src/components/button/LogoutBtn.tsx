@@ -12,6 +12,7 @@ const LogoutBtn = () => {
       type='button'
       onClick={() => {
         logout();
+        localStorage.clear();
       }}
     >
       로그아웃
